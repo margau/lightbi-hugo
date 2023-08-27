@@ -1,7 +1,10 @@
 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-4">
     <a href="{{ .Permalink }}" aria-label="Link to the blog">
         <div class="card single-post-card h-100 shadow-custom ">
-            {{ if .Params.image }}
+            {{ if .Params.imageResource }}
+            {{ $image := .Resources.Get .Params.imageResource }}
+            <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="card-img-top img-fluid lazyload">
+            {{ else if .Params.image }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}" class="card-img-top img-fluid lazyload" />
             {{ end }}
             {{ if .Params.video }}

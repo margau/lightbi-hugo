@@ -44,9 +44,9 @@
           {{ else }}
           {{ .Site.Author.name }}
           {{ end }}
-          {{ end }}
-
           &nbsp;&bull;&nbsp;&copy;
+          {{ end }}
+          
           {{ if .Site.Params.since }}
           {{ .Site.Params.since }} - {{ .Site.LastChange.Format "2006" }}
           {{ else }}
@@ -56,6 +56,11 @@
           {{ if .Site.Title }}
           &nbsp;&bull;&nbsp;
           <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
+          {{ end }}
+
+          {{ if .Site.Params.Footer }}
+          &nbsp;&bull;&nbsp;
+          {{ .Site.Params.Footer | safeHTML }}
           {{ end }}
         </p>
         <!-- Please don't remove this, keep my open source work credited. -->

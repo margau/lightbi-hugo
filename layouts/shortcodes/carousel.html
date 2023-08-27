@@ -26,7 +26,12 @@
                                       </span>
                                     </span>
                                 </div>
+                                {{ if .Params.imageResource }}
+                                {{ $image := .Resources.Get .Params.imageResource }}
+                                <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}">
+                                {{ else if .Params.image }}
                                 <img src="{{ .Params.image }}" alt="{{ .Title }}"></a>
+                                {{ end }}
                             </div>
                             <div class="col-md-4">
                                 <div class="card-body">
