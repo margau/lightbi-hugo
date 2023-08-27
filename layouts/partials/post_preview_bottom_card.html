@@ -31,7 +31,14 @@
 
             {{ if .Params.imageResource }}
             {{ $image := .Resources.Get .Params.imageResource }}
-            <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="card-img-top img-fluid">
+            <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="card-img-top img-fluid"
+            srcset="
+            {{ range $index, $width := .Site.Params.srcsetWidth }}
+            {{ $widthparam := printf "%s%s" $width "x"}}
+            {{ $img := $image.Resize $widthparam }}
+            {{$img.RelPermalink}} {{$width}}w,
+            {{ end }}
+            ">
             {{ else if .Params.image }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}" class="card-img-top img-fluid">
             {{ end }}
