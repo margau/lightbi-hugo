@@ -25,10 +25,19 @@
                 </div>
 
                 <div class="read-more-section">
-                    <h6>Read more</h6>
+                    <h6>{{ i18n "readMore" }}</h6>
                 </div>
+                {{ if .Params.imageAttributionPlain  }}
+                <p class="post-meta">Bild:
+                    {{ .Params.imageAttributionPlain }}
+                </p>
+                {{ else if .Params.attributionPlain  }}
+                <p class="post-meta">Bild:
+                    {{ .Params.attributionPlain }}
+                </p>
+                {{ end }}
             </div>
-
+            
             {{ if .Params.imageResource }}
             {{ $image := .Resources.Get .Params.imageResource }}
             <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="card-img-top img-fluid"

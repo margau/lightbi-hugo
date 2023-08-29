@@ -45,7 +45,16 @@
                                     <h3 class="card-title">{{ .Title }}</h3>
                                     <p class="card-text"> {{ if .Description }} {{ .Description }} {{ end }}</p>
                                     <p class="card-text"><small class="text-muted">
-                                                <a class="post-read-more" href="{{ .Permalink }}">Read more</a></small></p>
+                                                <a class="post-read-more" href="{{ .Permalink }}">{{ i18n "readMore" }}</a></small></p>
+                                                {{ if .Params.imageAttributionPlain  }}
+                                                <p class="card-text">Bild:
+                                                    {{ .Params.imageAttributionPlain }}
+                                                </p>
+                                                {{ else if .Params.attributionPlain  }}
+                                                <p class="card-text">Bild:
+                                                    {{ .Params.attributionPlain }}
+                                                </p>
+                                                {{ end }}
                                 </div>
                             </div>
                         </div>

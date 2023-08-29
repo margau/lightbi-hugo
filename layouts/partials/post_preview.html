@@ -25,8 +25,17 @@
                 </div>
 
                 <div class="read-more-section">
-                    <h6>Read more <i class="bi bi-arrow-right"></i></h6>
+                    <h6>{{ i18n "readMore" }} <i class="bi bi-arrow-right"></i></h6>
                 </div>
+                {{ if .Params.imageAttributionPlain  }}
+                <p class="post-meta">Bild:
+                    {{ .Params.imageAttributionPlain }}
+                </p>
+                {{ else if .Params.attributionPlain  }}
+                <p class="post-meta">Bild:
+                    {{ .Params.attributionPlain }}
+                </p>
+                {{ end }}
             </div>
 
             {{ if .Params.imageResource }}
@@ -47,6 +56,7 @@
                 <source src="{{ .Params.video }}">
             </video>
             {{ end }}
+
         </a>
     </div>
 </div> 
